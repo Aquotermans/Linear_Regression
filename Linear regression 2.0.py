@@ -34,11 +34,11 @@ covar = c/size
 #Denominator of a #(Xi-Xavg)^2    
 for i in range(size):
     d += (xls.at[i,0] - avg_x)**2
-    e += (xls.at[i,0] - avg_y)**2
+    e += (xls.at[i,1] - avg_y)**2
 
 #Standard deviation (Xi - Xavg)²/N
-sdx = (d/size)**-2
-sdy = (e/size)**-2   
+sdx = (d/size)**0.5
+sdy = (e/size)**0.5
     
 #Define a
 a = c/d
@@ -48,11 +48,13 @@ b = avg_y - a*avg_x
 
 x = []
 y = []
-
 for i in range(size):
     x.append(xls.at[i,0])
     y.append(xls.at[i,1])
 
+#Correlation
+r=0
+r = covar*(sdx*sdy)**-1
    
 #'o' means we plot dots
 plt.plot(x,y,'o')
@@ -65,5 +67,4 @@ plt.plot(xr,yr)
 print('Covariance is ',covar)
 print('Standard deviation of X ', sdx)
 print('Standard deviation of Y ', sdy)
-
-
+print('Correlation is ', r)
