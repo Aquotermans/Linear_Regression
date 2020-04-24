@@ -28,9 +28,6 @@ print('You chose the column ', x)
 y = int(input('Enter the index of the second columns '))
 print('You chose the column ', y)
 
-x = 1
-y = 2
-
 #Calculate the average of X and Y columns
 avg_x = sum(xls.iloc[:,x])/col
 avg_y = sum(xls.iloc[:,y])/col
